@@ -19,6 +19,9 @@ class CategoryForm
                 Textarea::make('description')
                     ->columnSpanFull(),
                 FileUpload::make('image')
+                    ->disk('public')
+                    ->directory('categories')
+                    ->imageEditor()
                     ->image(),
                 Toggle::make('is_active')
                     ->required(),

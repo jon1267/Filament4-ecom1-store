@@ -8,6 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
+use Filament\Support\Enums\Operation;
 
 class ProductForm
 {
@@ -19,14 +20,21 @@ class ProductForm
                     ->required(),
                 TextInput::make('sku')
                     ->label('SKU')
-                    ->required(),
+                    ->required()
+                    ->readOnly()
+                    ->hiddenOn(Operation::Create),
                 Textarea::make('description')
                     ->columnSpanFull(),
                 Select::make('category_id')
                     ->relationship('category', 'name')
+                    ->searchable()
+                    ->preload()
                     ->required(),
                 Select::make('supplier_id')
-                    ->relationship('supplier', 'name'),
+                    ->relationship('supplier', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->required(),
                 TextInput::make('purchase_price')
                     ->required()
                     ->numeric()

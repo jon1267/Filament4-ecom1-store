@@ -26,9 +26,9 @@ class ProductsTable
                     ->label('SKU')
                     ->searchable(),
                 TextColumn::make('category.name')
-                    ->searchable(),
+                    ->sortable(),
                 TextColumn::make('supplier.name')
-                    ->searchable(),
+                    ->sortable(),
                 TextColumn::make('purchase_price')
                     ->money()
                     ->sortable(),

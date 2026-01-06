@@ -27,6 +27,10 @@ class ProductResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    //protected static ?string $modelLabel = 'Items';
+    protected static ?string $navigationLabel = 'Items';
+    //protected static ?int $navigationSort = 0;
+
     public static function form(Schema $schema): Schema
     {
         return ProductForm::configure($schema);

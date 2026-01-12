@@ -11,6 +11,7 @@ use App\Filament\Resources\Products\Schemas\ProductInfolist;
 use App\Filament\Resources\Products\Tables\ProductsTable;
 use App\Models\Product;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -25,11 +26,21 @@ class ProductResource extends Resource
     //protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-gift';
 
+    //create navigation group (method 1)
+    protected static string | UnitEnum | null $navigationGroup = 'Inventory Management';
+
     protected static ?string $recordTitleAttribute = 'name';
 
     //protected static ?string $modelLabel = 'Items';
-    protected static ?string $navigationLabel = 'Items';
+    protected static ?string $navigationLabel = 'Product Items';
     //protected static ?int $navigationSort = 0;
+
+
+    /* create navigation group (method 2)
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Product Management');
+    }*/
 
     public static function form(Schema $schema): Schema
     {
@@ -70,4 +81,10 @@ class ProductResource extends Resource
                 SoftDeletingScope::class,
             ]);
     }
+
+    //способ изменения запроса к модели ресурса
+    //public static function getEloquentQuery(): Builder
+    //{
+    //    return parent::getEloquentQuery()->where('is_active', true);
+    //}
 }
